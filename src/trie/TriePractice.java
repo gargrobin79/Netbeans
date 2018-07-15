@@ -1,6 +1,8 @@
 package trie;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class TriePractice
 {
@@ -70,7 +72,27 @@ public class TriePractice
         this.addWord(child, ros);
             
     }
-
+    
+    public void display()
+    {
+       display(this.root,"");
+    }
+    
+    private void display(Node node,String sof)
+    {
+        if(node.isTerminal)
+        {
+            String ss=sof.substring(1)+node.data;
+            System.out.println(ss);
+        }
+        
+        Set<Map.Entry<Character,Node> > entries=node.hm.entrySet();
+        for(Map.Entry<Character,Node> entry:entries)
+        {
+            this.display(entry.getValue(), sof+node.data);
+        }
+    
+    }
     
     
     
