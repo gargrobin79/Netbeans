@@ -95,6 +95,40 @@ public class TriePractice
     }
     
     
+    public boolean search(String word)
+    {
+        return this.search(this.root,word);
+    }
+    
+    private boolean search(Node node,String str)
+    {
+        
+        if(str.length()==0)
+        {
+            if(node.isTerminal)
+            {
+                return true;
+            }
+            else
+                return false;
+        
+        
+        }
+        
+        Character cc=str.charAt(0);
+        String ros=str.substring(1);
+        
+        Node child=node.hm.get(cc);
+        if(child==null)
+        {
+            return false;
+        }
+        
+      
+        return this.search(child, ros);
+        
+    }
+    
     
     
 }
